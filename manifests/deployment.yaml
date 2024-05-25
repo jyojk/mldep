@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mldep
+  labels:
+    app: mldep
+  namespace: kube-public
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mldep
+  template:
+    metadata:
+      labels:
+        app: mldep
+    spec:
+      containers:
+        - name: mldep
+          image: dockerdepml.azurecr.io/imageslatest:latest
+          ports:
+            - containerPort: 8000
